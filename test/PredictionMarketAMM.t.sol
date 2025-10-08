@@ -242,7 +242,7 @@ contract PredictionMarketAMMTest is Test {
         vm.stopPrank();
 
         // Check Bob has shares before resolution
-        (,uint256 yesSharesBefore,) = amm.getUserShares(marketId, bob);
+        (, uint256 yesSharesBefore,) = amm.getUserShares(marketId, bob);
         assertEq(yesSharesBefore, expectedShares);
 
         // Fast forward and resolve in favor of YES
@@ -251,7 +251,7 @@ contract PredictionMarketAMMTest is Test {
         amm.resolveMarket(marketId, true);
 
         // Check Bob still has shares after resolution
-        (,uint256 yesSharesAfter,) = amm.getUserShares(marketId, bob);
+        (, uint256 yesSharesAfter,) = amm.getUserShares(marketId, bob);
         assertEq(yesSharesAfter, expectedShares);
 
         // Bob claims winnings
